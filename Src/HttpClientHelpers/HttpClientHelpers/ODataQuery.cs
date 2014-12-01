@@ -51,6 +51,11 @@ namespace HttpClientHelpers
             return JsonConvert.DeserializeObject<IEnumerable<T>>(result);
         }
 
+        public override string ToString()
+        {
+            return GetODataString();
+        }
+
         public void Dispose()
         {
             _client.Dispose();
@@ -61,7 +66,7 @@ namespace HttpClientHelpers
             var visitor = new ODataExpressionVisitor();
             visitor.Visit(_filter);
             var filter = visitor.ToString();
-            return filter;
+            return "$filter=" + filter;
         }
     }
 }

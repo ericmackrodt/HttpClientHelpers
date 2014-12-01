@@ -11,9 +11,9 @@ namespace HttpClientHelpers.Tests
         {
             string teste = "afk";
 
-            var query = await new ODataQuery<DummyDTO>("http://www.google.com")
+            var query = new ODataQuery<DummyDTO>("http://www.google.com")
                 .Filter(o => o.Id == 1 && (o.Name == teste || o.Name == "teste"))
-                .GetAsync();
+                .ToString();
         }
 
         public class DummyDTO
